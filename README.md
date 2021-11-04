@@ -21,7 +21,7 @@
         ```console
         $ curl -sfL https://get.k3s.io | K3S_URL=https://<server>:6443 K3S_TOKEN=<token> sh -
         ```
-- [Tailscale]() (optional)
+- [Tailscale](http://tailscale.com) (optional)
     ```console
     $ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add -
     $ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list
@@ -30,13 +30,18 @@
     $ sudo tailscale up
     $ tailscale ip -4
     ```
+- [Helm](https://helm.sh) (Necessary to run the Minecraft server)
+    ```console
+    $ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    $ chmod 700 get_helm.sh
+    $ ./get_helm.sh
+    ```
 #### Instructions:
 - [Minecraft Server]()
-	- ``
-	- ``
-	- ``
-	- ``
-	- ``
+	```console
+    $ helm repo add stable https://kubernetes-charts.storage.googleapis.com
+    $ kubectl create namespace minecraft
+    $ helm install --version '1.2.2' --namespace minecraft --values manifests/minecraft/minecraft.yml minecraft stable/minecraft
 - [Home Assistant](https://home-assistant.io/)
     - ``
     - ``

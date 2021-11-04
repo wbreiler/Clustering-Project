@@ -1,0 +1,15 @@
+---
+imageTag: armv7
+livenessProve:
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  failureThreshold: 180
+readinessProbe:
+  initialDelaySeconds: 60
+  periodSeconds: 10
+  failureThreshold: 180
+minecraftServer:
+  eula: true
+  version: '1.17.1'
+  Difficulty: normal
+  motd: "Welcome to Minecraft, running on a Raspberry Pi Cluster"
