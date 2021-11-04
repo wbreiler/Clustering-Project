@@ -2,7 +2,7 @@
 #### Prerequisites:
 - Raspberry Pis running [Ubuntu Server](https://ubuntu.com/download/raspberry-pi) 64 bit
     - I'm using 2x Raspberry Pi CM4 8GB RAM, a Raspberry Pi 4B with 4GB RAM, and a Raspberry Pi 3B+ with 1GB RAM.
-    - I installed Ubuntu Server using the following command on my Mac:
+    - I wrote the Ubuntu Server image using the following command on my Mac:
         ``` console
         $ sudo diskutil unmountDisk disk4 && pv ~/Downloads/RasPi\ Stuff/Ubuntu\ 20.04.img | sudo dd bs=1m of=/dev/disk4
         ```
