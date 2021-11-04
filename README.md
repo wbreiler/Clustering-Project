@@ -1,0 +1,73 @@
+# Raspberry Pi Cluster
+---
+#### FAQ:
+- Why use Raspberry Pis?
+	- Raspberry Pis are cheap, easy to set up, and aren't expensive to maintain.
+- Why containerize everything?
+	- I've found that containerization is the best way to get the most out of a Raspberry Pi, and it makes running a home lab easier and cheaper without an entire rack and a bunch of servers.
+#### Prerequisites:
+- Raspberry Pi(s) running Ubuntu Server 64 bit
+    - I'm using 2x Raspberry Pi CM4 8GB RAM, a Raspberry Pi 4B with 4GB RAM, and a Raspberry Pi 3B+ with 1GB RAM.
+- microk8s
+    - `# snap install microk8s --classic`
+    - `# sed -i '${s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/}' /boot/firmware/cmdline.txt`
+    - `# microk8s.enable dns storage`
+    - `# reboot now`
+    - On `master-pi`:
+        - `# microk8s add-node`
+    - On `worker-0x`:
+        - `# microk8s join ip-<ip>:25000/<key>`
+- Tailscale
+    - `$ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add -`
+    - `curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list`
+    - `# apt-get update`
+    - `# apt-get install tailscale`
+#### Instructions:
+- Minecraft Server
+	- ``
+	- ``
+	- ``
+	- ``
+	- ``
+- Home Assistant
+	- ``
+	- ``
+	- ``
+	- ``
+	- ``
+- Self-hosted monitoring (**Uptime Kuma**/Statping/Shynet)
+	- ``
+	- ``
+	- ``
+	- ``
+	- ``
+- Personal Cloud
+	- ``
+	- ``
+	- ``
+	- ``
+	- ``
+- Code Server
+	- ``
+	- ``
+	- ``
+	- ``
+	- ``
+- Drupal
+	- ``
+	- ``
+    - ``
+	- ``
+	- ``
+- Pastebin
+	- ``
+	- ``
+	- ``
+	- ``
+	- ``
+- Notes
+	- ``
+    - ``
+	- ``
+	- ``
+	- ``
