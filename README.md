@@ -6,6 +6,12 @@
         ```sh
         $ sudo diskutil unmountDisk disk4 && pv ~/Downloads/RasPi\ Stuff/Ubuntu\ 20.04.img | sudo dd bs=1m of=/dev/disk4
         ```
+        - On Windows, I'd recommend using the Raspberry Pi Imager from [Raspberry Pi Foundation](https://www.raspberrypi.org/downloads/raspi-imager/) or [Rufus](http://rufus.ie).
+        - On Linux, I'd use this command:
+            ```sh
+            # Replace sdx with the device name of your SD card
+            $ sudo dd bs=1m if=/home/user/Downloads/Ubuntu\ Server\ 20.04.img of=/dev/sdx status=progress
+            ```
 - [k3s](https://k3s.io)
     ```sh
     # Make sure your APT cahe is updated
@@ -24,12 +30,12 @@
         # Find the server token
         $ sudo cat /var/lib/rancher/k3s/server/token
         ```
-    - On the worker nodes:
+    - On the worker node(s):
         ```sh
         # Replace <server> with the IP address of the master node and <token> with the server token
         $ curl -sfL https://get.k3s.io | K3S_URL=https://<server>:6443 K3S_TOKEN=<token> sh -
         ```
-- [Tailscale](http://tailscale.com) (optional)
+- [Tailscale](http://tailscale.com) (optional, used for management outside of my LAN)
     ```sh
     # Output from the below command should be "OK"
     $ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add -
@@ -75,7 +81,7 @@
     # Enter the directory
     $ cd cluster-monitoring
     ```
-    Edit the `vars.jsonnet` file, tweaking the IP addresses to servers in the cluster, and enabling the `k3s` option as well as the `armExporter`
+    - Edit the `vars.jsonnet` file, tweaking the IP addresses to servers in the cluster, and enabling the `k3s` option as well as the `armExporter`
     ```sh
     $ make vendor
     $ make
@@ -90,7 +96,7 @@
         $ sudo kubectl apply -f manifests/drupal/drupal.yml
         $ sudo kubectl apply -f manifests/drupal/mariadb.yml
         ```
-    - Be sure to change the "host" value in the `drupal.yml` file to the IP address of the master node. 
+        - Be sure to change the "host" value in the `drupal.yml` file to the IP address of the master node. 
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
         - [Pi-hole]() is a DNS server that blocks ads and tracking.
