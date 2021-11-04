@@ -15,7 +15,7 @@
             ```
 - [k3s](https://k3s.io)
     ```sh
-    # Make sure your APT cahe is updated
+    # Make sure your APT cache is updated
     $ sudo apt update
     # Install any updates
     $ sudo apt upgrade
@@ -28,8 +28,8 @@
     ```
     - On the master node:
         ```sh
-        # Find the server token
-        $ sudo cat /var/lib/rancher/k3s/server/token
+        # Find the server token and save it to a file
+        $ sudo cat /var/lib/rancher/k3s/server/token > ~/token.txt
         ```
     - On the worker node(s):
         ```sh
