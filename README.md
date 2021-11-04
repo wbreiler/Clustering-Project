@@ -6,7 +6,7 @@
         ``` console
         $ sudo diskutil unmountDisk disk4 && pv Downloads/RasPi\ Stuff/Ubuntu\ 20.04.img | sudo dd bs=1m of=/dev/disk4
         ```
-- [k3s]()
+- [k3s](https://k3s.io)
     ```console
     $ sudo apt update
     $ sudo apt upgrade
@@ -64,6 +64,8 @@
     Edit the `vars.jsonnet` file, tweaking the IP addresses to servers in the cluster, and enabling the `k3s` option as well as the `armExporter`
     ```console
     # make vendor
+    # make
+    # make deploy
 - [Personal Cloud]()
 	- ``
 	- ``
