@@ -1,7 +1,6 @@
 # Raspberry Pi Cluster
----
 #### Prerequisites:
-- Raspberry Pi(s) running Ubuntu Server 64 bit
+- Raspberry Pis running Ubuntu Server 64 bit
     - I'm using 2x Raspberry Pi CM4 8GB RAM, a Raspberry Pi 4B with 4GB RAM, and a Raspberry Pi 3B+ with 1GB RAM.
     - I installed Ubuntu Server using the following command on my Mac:
         ``` console
@@ -14,11 +13,11 @@
     $ sudo microk8s.enable dns storage`
     $ reboot now
     ```
-    - On `master-pi`:
+    - On the master node:
         ```console
         $ sudo microk8s add-node
         ```
-    - On `worker-0x`:
+    - On the worker nodes:
         ```console
         $ sudo microk8s join ip-<ip>:25000/<key>
         ```
@@ -50,7 +49,7 @@
 	- ``
 	- ``
 	- ``
-- Self-hosted monitoring (**Uptime Kuma**/Statping/Shynet)
+- Monitoring
 	- ``
 	- ``
 	- ``
