@@ -112,3 +112,15 @@
         # Install Pi-hole, using the values we set in the manifest file
         $ sudo helm install --namespace pihole --values manifests/pihole/pihole.yml pihole mojo2600/pihole
         ```
+#### TODO:
+- [ ] Add Home Assistant
+- [ ] Make shell script to install all of the above
+    - [ ] Make an Ansible playbook to install all of the above
+- [ ] Add a "cleanup" script that will remove all of the above
+    - [ ] Make an Ansible playbook to remove all of the above
+- [ ] Clean up formatting
+- [ ] Take a picture of the cluster and upload it to GitHub
+- [ ] Order 2x of [these](https://www.aliexpress.com/item/1005003389500589.html)
+- [ ] Order PoE HATs from AdaFruit [here](https://www.adafruit.com/product/5058)
+- [ ] Order PoE switch [here](https://www.amazon.com/dp/B076HZFY3F/)
+- [ ] Order [this](https://www.amazon.com/dp/B07K72STFB)
