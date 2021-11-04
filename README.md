@@ -23,6 +23,7 @@
         ```sh
         # Find the server token
         $ sudo cat /var/lib/rancher/k3s/server/token
+        ```
     - On the worker nodes:
         ```sh
         # Replace <server> with the IP address of the master node and <token> with the server token
