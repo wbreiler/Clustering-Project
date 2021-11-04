@@ -1,4 +1,4 @@
-# Raspberry Pi Cluster
+# Raspberry Pi Cluster (WIP)
 #### Prerequisites:
 - Raspberry Pis running [Ubuntu Server]() 64 bit
     - I'm using 2x Raspberry Pi CM4 8GB RAM, a Raspberry Pi 4B with 4GB RAM, and a Raspberry Pi 3B+ with 1GB RAM.
@@ -12,7 +12,7 @@
     $ sudo apt upgrade
     $ sudo sed -i '${s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/}' /boot/firmware/cmdline.txt`
     $ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
-    $ reboot now
+    $ sudo reboot now
     ```
     - On the master node:
         ```console
@@ -66,33 +66,10 @@
     # make vendor
     # make
     # make deploy
-- [Personal Cloud]()
-	- ``
-	- ``
-	- ``
-	- ``
-	- ``
-- [Code Server]()
-	- ``
-	- ``
-	- ``
-	- ``
-	- ``
 - [Drupal](https://drupal.org/)
-	- ``
-	- ``
-    - ``
-	- ``
-	- ``
-- [Pastebin]()
-	- ``
-	- ``
-	- ``
-	- ``
-	- ``
-- [Notes]()
-	- ``
-    - ``
-	- ``
-	- ``
-	- ``
+    ```console
+    $ sudo kubectl create namespace drupal
+    $ sudo kubectl apply -f manifests/drupal.yml
+    $ sudo kubectl apply -f manifests/mariadb.yml
+    ```
+    - Be sure to change the "host" value in the `drupal.yml` file to the IP address of the master node. 
