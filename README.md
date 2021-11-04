@@ -6,27 +6,21 @@
         ``` console
         $ sudo diskutil unmountDisk disk4 && pv Downloads/RasPi\ Stuff/Ubuntu\ 20.04.img | sudo dd bs=1m of=/dev/disk4
         ```
-- [microk8s](https://microk8s.io/)
+- [k3s]()
     ```console
-    $ sudo snap install microk8s --classic`
+    $ sudo apt update
+    $ sudo apt upgrade
     $ sudo sed -i '${s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/}' /boot/firmware/cmdline.txt`
-    $ sudo microk8s.enable dns storage`
+    $ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
     $ reboot now
     ```
     - On the master node:
         ```console
-        $ sudo microk8s add-node
-        ```
+        $ sudo cat /var/lib/rancher/k3s/server/token
     - On the worker nodes:
         ```console
-        $ sudo microk8s join ip-<ip>:25000/<key>
+        $ curl -sfL https://get.k3s.io | K3S_URL=https://<server>:6443 K3S_TOKEN=<token> sh -
         ```
-    - After all nodes are joined, run `$ sudo microk8s kubectl get nodes`
-    - Make sure HA (high availability) is working by running `$ sudo microk8s status`. If it is working, it should show 
-    ```console
-    microk8s is running
-    high-availability: yes
-    ```
 - [Tailscale]() (optional)
     ```console
     $ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add -
@@ -54,12 +48,22 @@
 	- ``
 	- ``
 	- ``
-- [Monitoring]()
+- [Uptime Kuma](https://github.com/louislam/uptime-kuma)
 	- ``
 	- ``
 	- ``
 	- ``
 	- ``
+- [Grafana](https://github.com/carlosedp/cluster-monitoring)
+    ```console
+    $ sudo su -
+    # apt-get update && apt-get install -y build-essential golang
+    # git clone https://github.com/carlosedp/cluster-monitoring.git
+    # cd cluster-monitoring
+    ```
+    Edit the `vars.jsonnet` file, tweaking the IP addresses to servers in the cluster, and enabling the `k3s` option as well as the `armExporter`
+    ```console
+    # make vendor
 - [Personal Cloud]()
 	- ``
 	- ``
