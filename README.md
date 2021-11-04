@@ -27,7 +27,7 @@
     microk8s is running
     high-availability: yes
     ```
-- Tailscale
+- Tailscale (optional)
     ```console
     $ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add -
     $ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list
