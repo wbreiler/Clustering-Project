@@ -4,7 +4,7 @@
     - I'm using 2x Raspberry Pi CM4 8GB RAM, a Raspberry Pi 4B with 4GB RAM, and a Raspberry Pi 3B+ with 1GB RAM.
     - I installed Ubuntu Server using the following command on my Mac:
         ``` console
-        $ sudo diskutil unmountDisk disk4 && pv Downloads/RasPi\ Stuff/Ubuntu\ 20.04.img | sudo dd bs=1m of=/dev/disk4
+        $ sudo diskutil unmountDisk disk4 && pv ~/Downloads/RasPi\ Stuff/Ubuntu\ 20.04.img | sudo dd bs=1m of=/dev/disk4
         ```
 - [k3s](https://k3s.io)
     ```console
@@ -39,38 +39,24 @@
 #### Instructions:
 - [Minecraft Server]()
 	```console
-    $ helm repo add stable https://kubernetes-charts.storage.googleapis.com
-    $ kubectl create namespace minecraft
-    $ helm install --version '1.2.2' --namespace minecraft --values manifests/minecraft/minecraft.yml minecraft stable/minecraft
+    $ sudo helm repo add stable https://kubernetes-charts.storage.googleapis.com
+    $ sudo kubectl create namespace minecraft
+    $ sudo helm install --version '1.2.2' --namespace minecraft --values manifests/minecraft/minecraft.yml minecraft stable/minecraft
+    $ sudo kubectl get svc --namespace minecraft -w minecraft-minecraft
+    ```
 - [Home Assistant](https://home-assistant.io/)
-    - ``
-    - ``
-    - ``
-    - ``
-    - ``
-	- ``
-	- ``
-	- ``
-	- ``
-	- ``
-- [Uptime Kuma](https://github.com/louislam/uptime-kuma)
-	- ``
-	- ``
-	- ``
-	- ``
-	- ``
-- [Grafana](https://github.com/carlosedp/cluster-monitoring)
+    WIP
+- [Monitoring](https://github.com/carlosedp/cluster-monitoring)
     ```console
-    $ sudo su -
-    # apt-get update && apt-get install -y build-essential golang
-    # git clone https://github.com/carlosedp/cluster-monitoring.git
-    # cd cluster-monitoring
+    $ sudo apt-get update && apt-get install -y build-essential golang
+    $ git clone https://github.com/carlosedp/cluster-monitoring.git
+    $ cd cluster-monitoring
     ```
     Edit the `vars.jsonnet` file, tweaking the IP addresses to servers in the cluster, and enabling the `k3s` option as well as the `armExporter`
     ```console
-    # make vendor
-    # make
-    # make deploy
+    $ make vendor
+    $ make
+    $ make deploy
 - [Drupal](https://drupal.org/)
     ```console
     $ sudo kubectl create namespace drupal
@@ -78,3 +64,10 @@
     $ sudo kubectl apply -f manifests/drupal/mariadb.yml
     ```
     - Be sure to change the "host" value in the `drupal.yml` file to the IP address of the master node. 
+- [Pi-hole](https://pi-hole.net/)
+    ```console
+    $ sudo helm repo add mojo2600 https://mojo2600.github.io/pi-hole-kubernetes/
+    $ sudo helm repo update
+    $ sudo kubectl create namespace pihole
+    $ sudo helm install --version '1.7.6' --namespace pihole --values manifests/pihole/pihole.yml pihole mojo2600/pihole
+    ```
