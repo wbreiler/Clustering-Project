@@ -69,7 +69,7 @@
 - [Drupal](https://drupal.org/)
     ```console
     $ sudo kubectl create namespace drupal
-    $ sudo kubectl apply -f manifests/drupal.yml
-    $ sudo kubectl apply -f manifests/mariadb.yml
+    $ sudo kubectl apply -f manifests/drupal/drupal.yml
+    $ sudo kubectl apply -f manifests/drupal/mariadb.yml
     ```
     - Be sure to change the "host" value in the `drupal.yml` file to the IP address of the master node. 
