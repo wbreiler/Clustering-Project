@@ -21,10 +21,10 @@
     $ sudo apt upgrade
     # Add "cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1" to /boot/firmware/cmdline.txt. This will enable the cpuset and memory cgroups.
     $ sudo sed -i '${s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/}' /boot/firmware/cmdline.txt
-    # Install k3s
-    $ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
     # Reboot
     $ sudo reboot now
+    # Install k3s
+    $ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
     ```
     - On the master node:
         ```sh
@@ -60,6 +60,14 @@
     # Run the script
     $ ./get_helm.sh
     ```
+- [Netdata](https://netdata.cloud) (Optional)
+    
+    ```sh
+	# Run install script:
+	$ bash <(curl -Ss https://my-netdata.io/kickstart.sh)
+	# Join my Netdata space
+	bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
+	```
 #### Instructions:
 - [Minecraft Server]()
 	```sh
