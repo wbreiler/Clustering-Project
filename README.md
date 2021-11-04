@@ -60,7 +60,7 @@
     # Run the script
     $ ./get_helm.sh
     ```
-- [Netdata](https://netdata.cloud) (Optional)
+- [Netdata](https://netdata.cloud) (Optional. The build process might take a while, depending on the computer you're installing it on.)
     
     ```sh
 	# Run install script:
