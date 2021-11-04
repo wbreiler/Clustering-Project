@@ -103,7 +103,7 @@
         - [Pi-hole]() is a DNS server that blocks ads and tracking.
     - Installing:   
         ```sh
-        # Add the repo to helm
+        # Add the necessary repo to helm
         $ sudo helm repo add mojo2600 https://mojo2600.github.io/pi-hole-kubernetes/
         # Update your helm cache
         $ sudo helm repo update
