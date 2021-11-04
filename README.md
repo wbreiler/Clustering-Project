@@ -66,7 +66,7 @@
 	# Run install script:
 	$ bash <(curl -Ss https://my-netdata.io/kickstart.sh)
 	# Join my Netdata space
-	bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
+	$ bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
 	```
 #### Instructions:
 - [Minecraft Server]()
