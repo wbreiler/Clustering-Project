@@ -1,6 +1,6 @@
 # Raspberry Pi Cluster (WIP)
 #### Prerequisites:
-- Raspberry Pis running [Ubuntu Server]() 64 bit
+- Raspberry Pis running [Ubuntu Server](https://ubuntu.com/download/raspberry-pi) 64 bit
     - I'm using 2x Raspberry Pi CM4 8GB RAM, a Raspberry Pi 4B with 4GB RAM, and a Raspberry Pi 3B+ with 1GB RAM.
     - I installed Ubuntu Server using the following command on my Mac:
         ``` console
