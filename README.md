@@ -36,7 +36,7 @@
         # Replace <server> with the IP address of the master node and <token> with the server token
         $ curl -sfL https://get.k3s.io | K3S_URL=https://<server>:6443 K3S_TOKEN=<token> sh -
         ```
-- [Tailscale](http://tailscale.com) (optional, used for management outside of my LAN)
+- [Tailscale](http://tailscale.com) (Optional, used for management outside of my LAN)
     ```sh
     # Output from the below command should be "OK"
     $ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add -
@@ -77,6 +77,7 @@
     $ sudo kubectl create namespace minecraft
     # Install the Minecraft server, using the values we set in the manifest file
     $ sudo helm install --namespace minecraft --values manifests/minecraft/minecraft.yml minecraft stable/minecraft
+    # Find the IP address and port of the Minecraft server
     $ sudo kubectl get svc --namespace minecraft -w minecraft-minecraft
     ```
 - [Home Assistant](https://home-assistant.io/)
