@@ -72,7 +72,7 @@
 - [Minecraft Server]()
 	```sh
     # Add the stable helm repo
-    $ sudo helm repo add stable https://kubernetes-charts.storage.googleapis.com
+    $ sudo helm repo add stable https://charts.helm.sh/stable
     # Create a namespace
     $ sudo kubectl create namespace minecraft
     # Install the Minecraft server, using the values we set in the manifest file
