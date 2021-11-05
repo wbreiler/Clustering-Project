@@ -69,16 +69,24 @@
 	$ bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
 	```
 #### Instructions:
-- [Minecraft Server]()
+- [Minecraft Server]() (Be sure to change the values in [`minecraft.yml`](https://github.com/wbreiler/Clustering-Project/blob/master/manifests/minecraft/minecraft.yml) to fit your server's resources.)
 	```sh
-    # Add the stable helm repo
-    $ sudo helm repo add stable https://charts.helm.sh/stable
-    # Create a namespace
+    # To give the node where Minecraft is running access to the whole CPU and RAM you'll need to "taint" it so it only tolerates the Minecraft Server
+    $ sudo kubectl taint nodes <node-name> app=minecraft:NoSchedule
+    # And to make sure that the minecraft installation will select the node it tolerates you'll also need to label the node.
+    $ sudo kubectl label nodes <node-name> role=minecraft
+    # Add the minecraft Helm repo
+    $ sudo helm repo add itzg https://itzg.github.io/minecraft-server-charts/
+    # Update the Helm repo cache
+    $ sudo helm repo update
+    # Create the minecraft namespace
     $ sudo kubectl create namespace minecraft
-    # Install the Minecraft server, using the values we set in the manifest file
-    $ sudo helm install --namespace minecraft --values manifests/minecraft/minecraft.yml minecraft stable/minecraft
-    # Find the IP address and port of the Minecraft server
-    $ sudo kubectl get svc --namespace minecraft -w minecraft-minecraft
+    # Install the minecraft server
+    $ sudo helm install --namespace minecraft minecraft -f manifests/minecraft/minecraft.yml itzg/minecraft --kubeconfig /etc/rancher/k3s/k3s.yaml
+    # Make sure the minecraft server is running
+    $ sudo kubectl get pods --namespace minecraft
+    # Find the minecraft server IP address
+    $ sudo kubectl get pods --namespace minecraft -o wide | grep minecraft | awk '{print $6}'
     ```
 - [Home Assistant](https://home-assistant.io/)
     WIP
