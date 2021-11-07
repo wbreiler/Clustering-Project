@@ -1,6 +1,5 @@
 imageTag: multiarch
 
-
 tolerations:
   - key: "app"
     operator: "Equal"
