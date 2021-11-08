@@ -96,7 +96,7 @@
     ```sh
     # Update and install build-essential (needed for "make") and the go language
     $ sudo apt-get update && sudo apt-get install -y build-essential golang
-    # Download the monitoring repo
+    # Clone the monitoring repo
     $ git clone https://github.com/carlosedp/cluster-monitoring.git
     # Enter the directory
     $ cd cluster-monitoring
@@ -132,7 +132,7 @@
         $ sudo helm install --namespace pihole --values manifests/pihole/pihole.yml pihole mojo2600/pihole
         ```
 #### TODO:
-- [ ] Add Home Assistant
+- [x] Add Home Assistant (Started)
 - [ ] Make shell script to install all of the above
     - [ ] Make an Ansible playbook to install all of the above
 - [ ] Add a "cleanup" script that will remove all of the above
