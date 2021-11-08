@@ -89,7 +89,9 @@
     $ sudo kubectl get pods --namespace minecraft -o wide | grep minecraft | awk '{print $6}'
     ```
 - [Home Assistant](https://home-assistant.io/)
-    WIP
+    ```sh
+    
+    ```
 - [Monitoring](https://github.com/carlosedp/cluster-monitoring)
     ```sh
     # Update and install build-essential (needed for "make") and the go language
