@@ -68,6 +68,13 @@
 	# Join my Netdata space
 	$ bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
 	```
+- This repository cloned to your master node
+     ```sh
+     # Clone the repo
+     $ git clone --depth=1 https://github.com/wbreiler/Clustering-Project
+     # Enter the directory
+     $ cd Clustering-Project
+     ```
 #### Instructions:
 - [Minecraft Server]() (Be sure to change the values in [`minecraft.yml`](https://github.com/wbreiler/Clustering-Project/blob/master/manifests/minecraft/minecraft.yml) to fit your server's resources.)
 	```sh
