@@ -132,7 +132,7 @@
         $ sudo helm install --namespace pihole --values manifests/pihole/pihole.yml pihole mojo2600/pihole
         ```
 #### TODO:
-- [x] Add Home Assistant (In progress)
+- [ ] Add Home Assistant (In progress)
 - [ ] Make shell script to install all of the above
     - [ ] Make an Ansible playbook to install all of the above (Need help)
 - [ ] Add a "cleanup" script that will remove all of the above
