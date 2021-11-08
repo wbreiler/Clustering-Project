@@ -134,11 +134,11 @@
 #### TODO:
 - [x] Add Home Assistant (Started)
 - [ ] Make shell script to install all of the above
-    - [ ] Make an Ansible playbook to install all of the above
+    - [ ] Make an Ansible playbook to install all of the above (Need help)
 - [ ] Add a "cleanup" script that will remove all of the above
-    - [ ] Make an Ansible playbook to remove all of the above
+    - [ ] Make an Ansible playbook to remove all of the above (Need help)
 - [ ] Clean up formatting
-- [ ] Take a picture of the cluster and upload it to GitHub
+- [ ] Take a picture of the cluster and upload it to GitHub (Waiting on the the Pi 3B+, another CM4, and the Raspberry Pi 4)
 - [ ] Order 2x of [these](https://www.aliexpress.com/item/1005003389500589.html)
 - [ ] Order PoE HATs from AdaFruit [here](https://www.adafruit.com/product/5058)
 - [ ] Order PoE switch [here](https://www.amazon.com/dp/B076HZFY3F/)
