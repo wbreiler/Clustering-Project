@@ -19,7 +19,7 @@
     $ sudo apt update
     # Install any updates
     $ sudo apt upgrade
-    # Add "cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1" to /boot/firmware/cmdline.txt. This will enable the cpuset and memory cgroups.
+    # Add "cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1" to /boot/firmware/cmdline.txt
     $ sudo sed -i '${s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/}' /boot/firmware/cmdline.txt
     # Reboot
     $ sudo reboot now
