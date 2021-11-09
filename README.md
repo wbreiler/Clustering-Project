@@ -100,9 +100,9 @@
     # Create the home-assistant namespace
     $ sudo kubectl create namespace hass
     # Install Home Assistant
-    $ sudo kubectl apply -f manifests/hass/claim0.yaml
-    $ sudo kubectl apply -f manifests/hass/claim1.yaml
-    $ sudo kubectl apply -f manifests/hass/deployment.yaml
+    $ sudo kubectl apply -f manifests/hass/claim0.yml
+    $ sudo kubectl apply -f manifests/hass/claim1.yml
+    $ sudo kubectl apply -f manifests/hass/deployment.yml
     # Make sure everything is running
     $ sudo kubectl get pods --namespace hass -o wide
     ```
