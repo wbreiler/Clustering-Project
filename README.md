@@ -115,7 +115,7 @@
     # Enter the directory
     $ cd cluster-monitoring
     ```
-    - Edit the `vars.jsonnet` file, tweaking the IP addresses to servers in the cluster, and enabling the `k3s` option as well as the `armExporter`
+    - Edit the `vars.jsonnet` file, tweaking the IP address to the master node and enabling the `k3s` option as well as the `armExporter`
     ```sh
     $ make vendor
     $ make
