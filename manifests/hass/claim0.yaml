@@ -3,11 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: homeassistant-claim1
-  name: homeassistant-claim1
+    io.kompose.service: homeassistant-claim0
+  name: homeassistant-claim0
+  namespace: hass
 spec:
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100Mi

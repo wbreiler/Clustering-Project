@@ -97,7 +97,14 @@
     ```
 - [Home Assistant](https://home-assistant.io/)
     ```sh
-    
+    # Create the home-assistant namespace
+    $ sudo kubectl create namespace hass
+    # Install Home Assistant
+    $ sudo kubectl apply -f manifests/hass/claim0.yaml
+    $ sudo kubectl apply -f manifests/hass/claim1.yaml
+    $ sudo kubectl apply -f manifests/hass/deployment.yaml
+    # Make sure everything is running
+    $ sudo kubectl get pods --namespace hass -o wide
     ```
 - [Monitoring](https://github.com/carlosedp/cluster-monitoring)
     ```sh
