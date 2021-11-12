@@ -14,21 +14,22 @@
             $ sudo dd bs=1m if=/home/user/Downloads/Ubuntu\ Server\ 20.04.img of=/dev/sdx status=progress
             ```
 - [k3s](https://k3s.io)
-    ```sh
-    # Make sure your APT cache is updated
-    $ sudo apt update
-    # Install any updates
-    $ sudo apt upgrade
-    # Add "cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1" to /boot/firmware/cmdline.txt
-    $ sudo sed -i '${s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/}' /boot/firmware/cmdline.txt
-    # Reboot
-    $ sudo reboot now
-    # Install k3s
-    $ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
-    ```
+    - On all nodes:
+    	```sh
+    	# Make sure your APT cache is updated
+    	$ sudo apt update
+    	# Install any updates
+    	$ sudo apt upgrade
+    	# Add "cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1" to /boot/firmware/cmdline.txt
+    	$ sudo sed -i '${s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/}' /boot/firmware/cmdline.txt
+    	# Reboot
+    	$ sudo reboot now
+    	```
     - On the master node:
         ```sh
-        # Find the server token and save it to a file
+        # Install k3s
+	$ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+	# Find the server token and save it to a file
         $ sudo cat /var/lib/rancher/k3s/server/token > ~/token.txt
         ```
     - On the worker node(s):
@@ -75,6 +76,15 @@
      # Enter the directory
      $ cd Clustering-Project
      ```
+
+- Unattended Upgrades disabled
+    ```sh
+    # This sounds counterintuitive, but there are packages that need to be installed, and that can't be done with unattended-upgrades running
+    $ sudo systemctl stop unattended-upgrades
+    # Disable it
+    $ sudo systemctl disable unattended-upgrades
+    ```
+
 #### Instructions:
 - [Minecraft Server]() (Be sure to change the values in [`minecraft.yml`](https://github.com/wbreiler/Clustering-Project/blob/master/manifests/minecraft/minecraft.yml) to fit your server's resources.)
 	```sh
