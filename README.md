@@ -28,8 +28,8 @@
     - On the master node:
         ```sh
         # Install k3s
-	$ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
-	# Find the server token and save it to a file
+	    $ curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
+	    # Find the server token and save it to a file
         $ sudo cat /var/lib/rancher/k3s/server/token > ~/token.txt
         ```
     - On the worker node(s):
