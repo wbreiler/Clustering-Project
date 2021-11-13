@@ -109,10 +109,8 @@
     ```sh
     # Create the home-assistant namespace
     $ sudo kubectl create namespace hass
-    # Install Home Assistant
-    $ sudo kubectl apply -f manifests/hass/claim0.yml
-    $ sudo kubectl apply -f manifests/hass/claim1.yml
-    $ sudo kubectl apply -f manifests/hass/deployment.yml
+    # Apply the Home Assistant manifests
+    $ sudo kubectl apply -f manifests/hass/
     # Make sure everything is running
     $ sudo kubectl get pods --namespace hass -o wide
     ```
@@ -137,8 +135,8 @@
     - Installing:
         ```sh
         $ sudo kubectl create namespace drupal
-        $ sudo kubectl apply -f manifests/drupal/drupal.yml
-        $ sudo kubectl apply -f manifests/drupal/mariadb.yml
+        # Apply the Drupal manifests
+	$ sudo kubectl apply -f manifests/drupal/
         ```
         - Be sure to change the "host" value in the `drupal.yml` file to the IP address of the master node. 
 - [Pi-hole](https://pi-hole.net/)
