@@ -142,7 +142,7 @@ persistence:
   annotations: {}
   # storageClass: "-"
   dataDir:
-    enabled: false
+    enabled: true
     Size: 4Gi
 
 podAnnotations: {}
