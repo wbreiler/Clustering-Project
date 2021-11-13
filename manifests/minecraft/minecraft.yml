@@ -1,51 +1,154 @@
-imageTag: multiarch
+image: itzg/minecraft-server
+imageTag: latest
 
-tolerations:
-  - key: "app"
-    operator: "Equal"
-    value: "minecraft"
-    effect: "NoSchedule"
+## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+resources:
+  requests:
+    memory: 512Mi
+    cpu: 500m
 
-nodeSelector:
-  role: minecraft
+strategyType: Recreate
 
-livenessProbe: 
-  initialDelaySeconds: 120
-  periodSeconds: 60
+nodeSelector: {}
 
+tolerations: []
+
+affinity: {}
+
+securityContext:
+  runAsUser: 1000
+  fsGroup: 2000
+livenessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 5
+  failureThreshold: 10
+  successThreshold: 1
+  timeoutSeconds: 1
 readinessProbe:
-  initialDelaySeconds: 120
-  periodSeconds: 60
+  initialDelaySeconds: 30
+  periodSeconds: 5
+  failureThreshold: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+startupProbe:
+  enabled: false
+  failureThreshold: 30
+  periodSeconds: 10
+
+extraVolumes: []
 
 minecraftServer:
-  # This must be overridden, since we can't accept this for the user.
-  eula: "TRUE"
-
-  # One of: LATEST, SNAPSHOT, or a specific version (ie: "1.7.9").
+  # This must be overridden, since w can't accept this for the user.
+  eula: "FALSE"
   version: "LATEST"
-  # This can be one of "VANILLA", "FORGE", "SPIGOT", "BUKKIT", "PAPER", "FTB", "SPONGEVANILLA"
-  type: "SPIGOT"
-
-  # Max view distance (in chunks).
+  type: "VANILLA"
+  forgeVersion:
+  forgeInstallerUrl:
+  ftbServerMod:
+  cfServerMod:
+  ftbLegacyJavaFixer: false
+  difficulty: normal
+  whitelist:
+  # A comma-separated list of player names who should be admins.
+  ops:
+  icon:
+  maxPlayers: 20
+  maxWorldSize: 29999984
+  allowNether: true
+  announcePlayerAchievements: true
+  enableCommandBlock: true
+  forcegameMode: false
+  generateStructures: true
+  hardcore: false
+  maxBuildHeight: 256
+  maxTickTime: 60000
+  spawnAnimals: true
+  spawnMonsters: true
+  spawnNPCs: true
   viewDistance: 12
+  levelSeed:
+  gameMode: survival
+  motd: "Welcome to Minecraft on Kubernetes!"
+  pvp: true
+  levelType: DEFAULT
+  generatorSettings:
+  worldSaveName: world
+  forceReDownload: false
+  downloadModpackUrl:
+  removeOldMods: true
+  onlineMode: true
+  memory: 1024M
+  jvmOpts: ""
+  jvmXXOpts: ""
+  serviceAnnotations: {}
+  serviceType: ClusterIP
+  nodePort:
+  servicePort: 25565
+  loadBalancerIP:
+  externalIPs:
 
-  # Message of the Day
-  motd: "Welcome to Minecraft on Kubernetes on Rapsberry Pi!"
+  rcon:
+    # If you enable this, make SURE to change your password below.
+    enabled: false
+    port: 25575
+    password: "CHANGEME!"
+    existingSecret:
+    secretKey: rcon-password
+    serviceType: ClusterIP
+    ## Set the external port if the rcon serviceType is NodePort
+    nodePort:
+    loadBalancerIP:
+    # loadBalancerSourceRanges: []
+    ## Set the externalTrafficPolicy in the Service to either Cluster or Local
+    # externalTrafficPolicy: Cluster
 
-  # If you adjust this, you may need to adjust resources.requests above to match.
-  # If you are running on raspberry pi 4 you can utilize a lot more
-  memory: 4Gi
+  extraPorts: []
+    # These options allow you to expose another port from the Minecraft server, plugins such
+    # as dynmap (8123) and bluemap (8100) will require this for access to their web interfaces
+    #
+    # - name: map
+    #   containerPort: 8123
+    #   protocol: TCP
+    #   service:
+    #     enabled: false
+    #     embedded: false
+    #     annotations: {}
+    #     type: ClusterIP
+    #     loadBalancerIP: ""
+    #     loadBalancerSourceRanges: []
+    #     externalTrafficPolicy: Cluster
+    #     port: 8123
+    #   ingress:
+    #     enabled: false
+    #     annotations:
+    #       kubernetes.io/ingress.class: nginx
+    #       kubernetes.io/tls-acme: "true"
+    #     hosts:
+    #       - name: map.local
+    #         path: /
+    #     tls:
+    #       - secretName: map-tls
+    #         hosts:
+    #           - map.local
+
+  query:
+    # If you enable this, your server will be "published" to Gamespy
+    enabled: false
+    port: 25565
+
+extraEnv: {}
 
 persistence:
-  ## minecraft data Persistent Volume Storage Class
-  ## If defined, storageClassName: <storageClass>
-  ## If set to "-", storageClassName: "", which disables dynamic provisioning
-  ## If undefined (the default) or set to null, no storageClassName spec is
-  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack)
-  ##
+  annotations: {}
   # storageClass: "-"
   dataDir:
-    # Set this to false if you don't care to persist state between restarts.
-    enabled: true
-    Size: 10Gi
+    enabled: false
+    Size: 4Gi
+
+podAnnotations: {}
+
+deploymentAnnotations: {}
+
+serviceAnnotations: {}
+
+rconServiceAnnotations: {}
