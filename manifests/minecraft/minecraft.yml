@@ -39,7 +39,7 @@ extraVolumes: []
 
 minecraftServer:
   # This must be overridden, since w can't accept this for the user.
-  eula: "FALSE"
+  eula: "TRUE"
   version: "LATEST"
   type: "VANILLA"
   forgeVersion:
