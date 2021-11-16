@@ -117,8 +117,8 @@
 
         ```
 #### TODO:
-- [ ] Make shell script to install all of the above
-- [ ] Add a "cleanup" script that will remove all of the above
+- [ ] Make shell script to install all of the above (In progress)
+- [ ] Add a "cleanup" script that will remove all of the above (In progress)
 - [ ] Clean up formatting (In progress)
 - [ ] Take a picture of the cluster and upload it to GitHub (Waiting on another CM4)
 - [ ] Order 2x of [these](https://www.aliexpress.com/item/1005003389500589.html)
