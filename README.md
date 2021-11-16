@@ -63,11 +63,11 @@
 - [Netdata](https://netdata.cloud) (Optional. The build process might take a while, depending on the computer you're installing it on.)
     
     ```sh
-	# Run install script:
-	$ bash <(curl -Ss https://my-netdata.io/kickstart.sh)
-	# Join my Netdata space
-	$ bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
-	```
+	  # Run install script:
+	  $ bash <(curl -Ss https://my-netdata.io/kickstart.sh)
+	  # Join my Netdata space
+	  $ bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
+	  ```
 - Unattended Upgrades disabled
     ```sh
     # This sounds counterintuitive, but there are packages that need to be installed
@@ -78,7 +78,7 @@
     ```
 #### Instructions:
 - [Minecraft Server](https://github.com/itzg/docker-minecraft-server)
-	```sh
+	  ```sh
     # Make Minecraft volume
     $ docker volume create minecraft-data
     # Run the server
