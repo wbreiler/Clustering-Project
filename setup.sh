@@ -18,6 +18,7 @@ select yn in "Yes" "No"; do
 					echo "Adding your user to the Docker group...";
 					sudo usermod -aG docker $USER;
 					echo "Initalizing Docker swarm";
+					sudo docker swarm init;
 					break;;
 				No ) 
 					echo "Exiting";

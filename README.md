@@ -111,7 +111,7 @@
     $ docker stack deploy -c stack.yml drupal
     # Scale the stack
     $ docker stack scale drupal_drupal=3
-    $ docker stack scale docker_postgres=3
+    $ docker stack scale drupal_postgres=3
     ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
