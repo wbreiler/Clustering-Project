@@ -101,7 +101,9 @@
     - Installing:
         ```sh
         # Download the stack.yml file
-        $ curl -fsSL https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml > stack.ym
+        $ curl -fsSL https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml > stack.yml
+        # Run the stack
+        $ docker stack deploy -c stack.yml drupal
         ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
