@@ -70,7 +70,8 @@
 	```
 - Unattended Upgrades disabled
     ```sh
-    # This sounds counterintuitive, but there are packages that need to be installed, and that can't be done with unattended-upgrades running
+    # This sounds counterintuitive, but there are packages that need to be installed
+    # and that can't be done with unattended-upgrades running
     $ sudo systemctl stop unattended-upgrades
     # Disable it
     $ sudo systemctl disable unattended-upgrades
