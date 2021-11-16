@@ -109,8 +109,8 @@
     $ docker service create --name drupal --publish 8080:80 --mount source=drupal-modules,target=/var/www/html/modules --mount source=drupal-profiles,target=/var/www/html/profiles --mount source=drupal-themes,target=/var/www/html/themes --mount source=drupal-sites,target=/var/www/html/sites drupal:8-apache
     $ docker service create --name postgres --environment POSTGRES_PASSWORD=<password>
     # Scale the service
-    $ docker stack scale drupal_drupal=3
-    $ docker stack scale drupal_postgres=3
+    $ docker service scale drupal_drupal=3
+    $ docker server scale drupal_postgres=3
     ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
