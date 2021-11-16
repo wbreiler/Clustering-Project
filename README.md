@@ -86,17 +86,21 @@
 #### Instructions:
 - [Minecraft Server](https://github.com/itzg/docker-minecraft-server)
 	```sh
-    # Make Minecraft data directory
-    $ mkdir -p ./minecraft-data
+    # Make Minecraft volume
+    $ docker volume create minecraft-data
     # Run the server
-    $ docker run -d --name minecraft-server -p 25565:25565 19132:19132 -v ./minecraft-data:/data itzg/minecraft-server
+    $ docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER itzg/minecraft-server
     # Scale the server
     $ docker service scale minecraft-server=3
     ```
 - [Home Assistant](https://home-assistant.io/)
     ```sh
-    
-
+    # Create the volume for Home Assistant
+    $ docker volume create hass-data
+    # Run the server
+    $ docker service create --name hass --privileged -e TZ=America/Chicago --mount source=hass-data,target=/config --network=host ghcr.io/home-assistant/home-assistant:stable
+    # Scale the server
+    $ docker service scale hass=3
     ```
 - [Drupal](https://drupal.org/)
     - What is Drupal?	
