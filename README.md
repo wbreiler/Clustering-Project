@@ -68,14 +68,6 @@
 	# Join my Netdata space
 	$ bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
 	```
-- This repository cloned to your master node
-     ```sh
-     # Clone the repo
-     $ git clone --depth=1 https://github.com/wbreiler/Clustering-Project
-     # Enter the directory
-     $ cd Clustering-Project
-     ```
-
 - Unattended Upgrades disabled
     ```sh
     # This sounds counterintuitive, but there are packages that need to be installed, and that can't be done with unattended-upgrades running
