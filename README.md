@@ -106,8 +106,7 @@
     $ docker volume create drupal-themes
     $ docker volume create drupal-sites
     # Run the stack
-    $ docker service create --name drupal --publish 8080:80 --mount source=drupal-modules,target=/var/www/html/modules --mount source=drupal-profiles,target=/var/www/html/profiles --mount source=drupal-themes,target=/var/www/html/themes --mount source=drupal-sites,target=/var/www/html/sites drupal:8-apache
-    $ docker service create --name postgres --environment POSTGRES_PASSWORD=<password>
+    $ docker stack 
     # Scale the service
     $ docker service scale drupal_drupal=3
     $ docker server scale drupal_postgres=3
