@@ -83,15 +83,19 @@
     # Disable it
     $ sudo systemctl disable unattended-upgrades
     ```
-
 #### Instructions:
-- [Minecraft Server]() (Be sure to change the values in [`minecraft.yml`](https://github.com/wbreiler/Clustering-Project/blob/master/manifests/minecraft/minecraft.yml) to fit your server's resources.)
+- [Minecraft Server](https://github.com/itzg/docker-minecraft-server)
 	```sh
-
+    # Make Minecraft data directory
+    $ mkdir -p ./minecraft-data
+    # Run the server
+    $ docker run -d --name minecraft-server -p 25565:25565 19132:19132 -v ./minecraft-data:/data itzg/minecraft-server
+    # Scale the server
+    $ docker service scale minecraft-server=3
     ```
 - [Home Assistant](https://home-assistant.io/)
     ```sh
-    # Create the home-assistant namespace
+    
 
     ```
 - [Drupal](https://drupal.org/)
