@@ -15,31 +15,31 @@
             ```
 - [Docker](https://www.docker.com/)
     - On all nodes:
-    	```sh
-    	# Make sure your APT cache is updated
-    	$ sudo apt update
-    	# Install any updates
-    	$ sudo apt upgrade
-    	# Install Docker
-      $ sudo apt-get install ca-certificates curl gnupg lsb-release
-      # Add Docker's official GPG key
-      $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-      # Add the Docker repository to APT sources
-      $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-      # Update the APT cache
-      $ sudo apt update
-      # Install Docker
-      $ sudo apt-get install docker-ce docker-ce-cli containerd.io
-    	# Add user to docker group
-      $ sudo usermod -aG docker $USER
-      # Reboot
-    	$ sudo reboot now
-    	```
+    ```sh
+    # Make sure your APT cache is updated
+    $ sudo apt update
+    # Install any updates
+    $ sudo apt upgrade
+    # Install Docker
+    $ sudo apt-get install ca-certificates curl gnupg lsb-release
+    # Add Docker's official GPG key
+    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    # Add the Docker repository to APT sources
+    $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    # Update the APT cache
+    $ sudo apt update
+    # Install Docker
+    $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+    # Add user to docker group
+    $ sudo usermod -aG docker $USER
+    # Reboot
+    $ sudo reboot now
+    ```
     - On the master node:
-        ```sh
-      # Initialize Docker Swarm
-	    $ docker swarm init --advertise-addr <IP address>
-        ```
+    ```sh
+    # Initialize Docker Swarm
+	$ docker swarm init --advertise-addr <IP address>
+    ```
     - On the worker node(s):
         ```sh
       # Replace <server> with the IP address of the master node and <token> with the server token
@@ -105,11 +105,9 @@
     $ docker volume create drupal-profiles
     $ docker volume create drupal-themes
     $ docker volume create drupal-sites
-    # Download the stack.yml file
-    $ curl -fsSL https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml > stack.yml
     # Run the stack
-    $ docker stack deploy -c stack.yml drupal
-    # Scale the stack
+    $ docker service create --name drupal 
+    # Scale the service
     $ docker stack scale drupal_drupal=3
     $ docker stack scale drupal_postgres=3
     ```
