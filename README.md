@@ -110,7 +110,7 @@
         ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
-        - [Pi-hole]() is a DNS server that blocks ads and tracking.
+        - [Pi-hole]() is a DNS server that blocks ads and tracking, originally created for use on a Raspberry Pi.
     - Installing:   
         ```sh
 
