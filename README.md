@@ -100,6 +100,10 @@
 	    - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
     - Installing:
         ```sh
+        # Create the volume for Drupal
+        $ docker volume create drupal-data
+        # Run the server
+        $ docker service create --name drupal --publish 80:80 --mount source=drupal-data,target=/var/www/html -e TZ=America/Chicago --network=host drupal
         ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
