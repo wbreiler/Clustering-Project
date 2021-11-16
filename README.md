@@ -21,29 +21,29 @@
     	# Install any updates
     	$ sudo apt upgrade
     	# Install Docker
-        $ sudo apt-get install ca-certificates curl gnupg lsb-release
-        # Add Docker's official GPG key
-        $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-        # Add the Docker repository to APT sources
-        $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-        # Update the APT cache
-        $ sudo apt update
-        # Install Docker
-        $ sudo apt-get install docker-ce docker-ce-cli containerd.io
-    	  # Add user to docker group
-        $ sudo usermod -aG docker $USER
-        # Reboot
+      $ sudo apt-get install ca-certificates curl gnupg lsb-release
+      # Add Docker's official GPG key
+      $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+      # Add the Docker repository to APT sources
+      $ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+      # Update the APT cache
+      $ sudo apt update
+      # Install Docker
+      $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+    	# Add user to docker group
+      $ sudo usermod -aG docker $USER
+      # Reboot
     	$ sudo reboot now
     	```
     - On the master node:
         ```sh
-        # Initialize Docker Swarm
+      # Initialize Docker Swarm
 	    $ docker swarm init --advertise-addr <IP address>
         ```
     - On the worker node(s):
         ```sh
-        # Replace <server> with the IP address of the master node and <token> with the server token
-        $ docker swarm join --token <token> <server>:2377
+      # Replace <server> with the IP address of the master node and <token> with the server token
+      $ docker swarm join --token <token> <server>:2377
         ```
 - [Tailscale](http://tailscale.com) (Optional, used for management outside of my LAN)
     ```sh
@@ -99,22 +99,22 @@
     - What is Drupal?	
 	    - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
     - Installing:
-        ```sh
-        # Download the stack.yml file
-        $ curl -fsSL https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml > stack.yml
-        # Run the stack
-        $ docker stack deploy -c stack.yml drupal
-        # Scale the stack
-        $ docker stack scale drupal_drupal=3
-        $ docker stack scale docker_postgres=3
-        ```
+    ```sh
+    # Download the stack.yml file
+    $ curl -fsSL https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml > stack.yml
+    # Run the stack
+    $ docker stack deploy -c stack.yml drupal
+    # Scale the stack
+    $ docker stack scale drupal_drupal=3
+    $ docker stack scale docker_postgres=3
+    ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
         - [Pi-hole]() is a DNS server that blocks ads and tracking, originally created for use on a Raspberry Pi.
     - Installing:   
-        ```sh
-
-        ```
+    ```sh
+    Test UwU
+    ```
 #### TODO:
 - [ ] Make shell script to install all of the above (In progress)
 - [ ] Add a "cleanup" script that will remove all of the above (In progress)
