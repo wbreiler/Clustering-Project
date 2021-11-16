@@ -57,7 +57,7 @@
     $ sudo apt install tailscale
     # Start Tailscale:
     $ sudo tailscale up
-    # Find Tailscale IP address:
+    # Find Tailscale IPv4 address:
     $ tailscale ip -4
     ```
 - [Netdata](https://netdata.cloud) (Optional. The build process might take a while, depending on the computer you're installing it on.)
