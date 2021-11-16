@@ -83,7 +83,7 @@
     $ docker volume create minecraft-data
     # Run the server
     $ docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER itzg/minecraft-server
-    # Scale the server
+    # Scale the service
     $ docker service scale minecraft-server=3
     ```
 - [Home Assistant](https://home-assistant.io/)
@@ -92,7 +92,7 @@
     $ docker volume create hass-data
     # Run the server
     $ docker service create --name hass --privileged -e TZ=America/Chicago --mount source=hass-data,target=/config --network=host ghcr.io/home-assistant/home-assistant:stable
-    # Scale the server
+    # Scale the service
     $ docker service scale hass=3
     ```
 - [Drupal](https://drupal.org/)
@@ -113,7 +113,13 @@
         - [Pi-hole]() is a DNS server that blocks ads and tracking, originally created for use on a Raspberry Pi.
     - Installing:   
     ```sh
-    Test UwU
+    # Create the volumes
+    $ docker volume create pihole
+    $ docker volume create dnsmasq
+    # Run Pi-hole
+    $ docker service create --name pihole -e TZ=America/Chicago -e WEBPASSWORD=<password> -e SERVERIP=<serverip> --mount source=pihole,target=/etc/pihole --mount source=dnsmasq,target=/etc/dnsmasq.d --publish 80:80 --publish 53:53/tcp --publish 53:53/udp pihole/pihole
+    # Scale the service
+    $ docker service scale pihole=3
     ```
 #### TODO:
 - [ ] Make shell script to install all of the above (In progress)
