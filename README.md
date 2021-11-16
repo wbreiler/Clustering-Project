@@ -106,7 +106,7 @@
     $ docker volume create drupal-themes
     $ docker volume create drupal-sites
     # Run the stack
-    $ docker service create --name drupal 
+    $ docker service create --name drupal --publish 8080:80 --mount source=drupal-modules,target=/var/www/html/modules --mount source=drupal-profiles,target=/var/www/html/profiles -- 
     # Scale the service
     $ docker stack scale drupal_drupal=3
     $ docker stack scale drupal_postgres=3
