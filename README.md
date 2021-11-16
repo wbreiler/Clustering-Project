@@ -78,7 +78,7 @@
     ```
 #### Instructions:
 - [Minecraft Server](https://github.com/itzg/docker-minecraft-server)
-	  ```sh
+    ```sh
     # Make Minecraft volume
     $ docker volume create minecraft-data
     # Run the server
