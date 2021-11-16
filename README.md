@@ -100,6 +100,11 @@
 	    - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
     - Installing:
     ```sh
+    # Create the necessary volumes
+    $ docker volume create drupal-modules
+    $ docker volume create drupal-profiles
+    $ docker volume create drupal-themes
+    $ docker volume create drupal-themes
     # Download the stack.yml file
     $ curl -fsSL https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml > stack.yml
     # Run the stack
