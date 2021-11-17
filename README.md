@@ -41,10 +41,10 @@
 	$ docker swarm init --advertise-addr <IP address>
     ```
     - On the worker node(s):
-        ```sh
-      # Replace <server> with the IP address of the master node and <token> with the server token
-      $ docker swarm join --token <token> <server>:2377
-        ```
+    ```sh
+    # Replace <server> with the IP address of the master node and <token> with the server token
+    $ docker swarm join --token <token> <server>:2377
+    ```
 - [Tailscale](http://tailscale.com) (Optional, used for management outside of my LAN)
     ```sh
     # Output from the below command should be "OK"
