@@ -5,6 +5,9 @@ select yn in "Yes" "No"; do
 		Yes ) 
 			echo "Starting installation..."; 
 			sleep 3;
+			echo "Disabling unattended-upgrades":
+			sudo systemctl disable unattended-upgrades;
+			sudo systemctl stop unattended-upgrades;
 			echo "Installing dependencies...";
 			sudo apt update;
 			sudo apt install ca-certificates curl gnupg lsb-release -y -qqq;

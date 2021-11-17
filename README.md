@@ -105,11 +105,11 @@
     $ docker volume create drupal-profiles
     $ docker volume create drupal-themes
     $ docker volume create drupal-sites
-    # Run the stack
-    $ docker stack 
-    # Scale the service
-    $ docker service scale drupal_drupal=3
-    $ docker server scale drupal_postgres=3
+    # Run the server
+    $ docker service create --name postgres -e POSTGRES_PASSWORD=<password> postgres:10
+    $ docker service create --name drupal --publish 8080:80 --mount source=drupal-modules,target=/var/www/html/modules --mount source=drupal-profiles,target=/var/www/html/profiles --mount source=drupal-themes,target=/var/www/html/themes --mount source=drupal=sites,target=/var/www/html/sites
+    $ docker service scale postgres=3
+    $ docker service scale drupal=3
     ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
