@@ -67,7 +67,7 @@
 	  $ bash <(curl -Ss https://my-netdata.io/kickstart.sh)
 	  # Join my Netdata space
 	  $ bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
-	  ```
+    ```
 - Unattended Upgrades disabled
     ```sh
     # This sounds counterintuitive, but there are packages that need to be installed
