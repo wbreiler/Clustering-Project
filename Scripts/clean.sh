@@ -18,7 +18,7 @@ echo "Would you like to remove the containers?"
 select yn in "Yes" "No"; do
 	case $yn in
 		Yes )
-			docker rm $(docker service ls -a -q);
+			docker service rm $(docker service ls -q);
 			sleep 3;
 			echo "Containers removed";
 			break;;
