@@ -7,7 +7,7 @@
         # Replace disk4 with the device name of your SD card
         $ sudo diskutil unmountDisk disk4 && pv ~/Downloads/RasPi\ Stuff/Ubuntu\ 20.04.img | sudo dd bs=1m of=/dev/disk4
         ```
-        - On Windows, I'd recommend using the Raspberry Pi Imager from [Raspberry Pi Foundation](https://www.raspberrypi.org/downloads/raspi-imager/) or [Rufus](http://rufus.ie).
+        - On Windows, I'd recommend using the [Raspberry Pi Imager](https://www.raspberrypi.org/downloads/raspi-imager) from Raspberry Pi Foundation or [Rufus](http://rufus.ie).
         - On Linux, I'd use this command:
             ```sh
             # Replace sdx with the device name of your SD card
