@@ -124,6 +124,19 @@
     # Scale the service
     $ docker service scale pihole=3
     ```
+- [Heimdall](http://heimdall.site)
+    - What is Heimdall?
+        - [Heimdall]() is a dashboard to manage all of your applications. It doesn't have to be limited to just applications though, it can link to anything you'd like.
+    - Installation:
+    ```sh
+    # Create the volumes
+    $ docker volume create heimdall-config
+    # Run Heimdall
+    $ docker service create --name dashboard -e TZ=America/Chicago --publish 80:80 --publish 443:443 --mount source=heimdall-config.target=/config lscr.io/linuxserver/heimdall
+    # Scale the service
+    $ docker service scale dashboard=3
+    ```
+
 #### TODO:
 - [ ] Make shell script to install all of the above (In progress)
 - [ ] Add a "cleanup" script that will remove all of the above (In progress)
