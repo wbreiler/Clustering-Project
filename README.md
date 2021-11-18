@@ -11,7 +11,7 @@
     - On Linux, I'd use this command:
     ```sh
     # Replace sdx with the device name of your SD card
-     sudo dd bs=1m if=/home/user/Downloads/Ubuntu\ Server\ 20.04.img of=/dev/sdx status=progress
+    sudo dd bs=1m if=/home/user/Downloads/Ubuntu\ Server\ 20.04.img of=/dev/sdx status=progress
     ```
 - [Docker](https://www.docker.com/)
     - On all nodes:
