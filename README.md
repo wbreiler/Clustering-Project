@@ -86,6 +86,9 @@
    docker service scale minecraft-server=3
    ```
 - [Home Assistant](https://home-assistant.io/)
+   - What is [Home Assistant]()?
+     - [Home Assistant]() is a free and open-source software for home automation that's designed to be the central control system for smart home devices with focus on local control and privacy. It is commonly hosted on a Raspberry Pi
+   - Installation:
    ```sh
    # Create the volume for Home Assistant
    docker volume create hass-data
