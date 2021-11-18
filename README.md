@@ -61,7 +61,6 @@
     $ tailscale ip -4
     ```
 - [Netdata](https://netdata.cloud) (Optional. The build process might take a while, depending on the computer you're installing it on.)
-    
     ```sh
 	  # Run install script:
 	  $ bash <(curl -Ss https://my-netdata.io/kickstart.sh)
@@ -115,7 +114,7 @@
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
         - [Pi-hole]() is a DNS server that blocks ads and tracking, originally created for use on a Raspberry Pi.
-    - Installing:   
+    - Installing:
     ```sh
     # Create the volumes
     $ docker volume create pihole
