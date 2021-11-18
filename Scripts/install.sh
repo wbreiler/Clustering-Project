@@ -15,14 +15,16 @@ select yn in "Yes" "No"; do
 					docker volume create drupal-sites;
 					docker volume create pihole;
 					docker volume create dnsmasq;
+					docker volume create heimdall-config;
+					sleep 3;
 					echo "Creating containers";
 					sleep 3;
-					echo "Starting Minecraft server";
+					echo "Installing Minecraft server";
 					docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER itzg/minecraft-server;
 				sleep 3;
-				echo "Starting Home Assistant";
+				echo "Installing Home Assistant";
 				docker service create --name hass --privileged -e TZ=America/Chicago --mount source=hass-data,target=/config --network=host ghcr.io/home-assistant/home-assistant stable;
-				echo "Creating Drupal server";
+				echo "Installing Drupal server";
 				docker service create --name postgres -e POSTGRES_PASSWORD=<password> postgres:10
 				sleep 4;
 				docker service create --name drupal --publish 8080:80 --mount source=drupal-modules,target=/var/www/html/modules --mount source=drupal-profiles,target=/var/www/html/profiles --mount source=drupal-themes,target=/var/www/html/themes --mount source=drupal-sites,target=/var/www/html/sites drupal:8-apache;
@@ -31,6 +33,9 @@ select yn in "Yes" "No"; do
 				sleep 3;
 				docker service create --name pihole -e TZ=America/Chicago -e WEBPASSWORD=<password> -e SERVERIP=<server ip> --mount source=pihole,target=/etc/pihole --mount source=dnsmasq,target=/etc/dnsmasq.d --publish 80:80 --publish 53:53/tcp --publish 53:53/udp pihole/pihole;
 				sleep 3;
+				echo "Installing Heimdall";
+				sleep 3;
+				docker service create --name dashboard -e TZ=America/Chicago --mount source=heimdall-config,target=/config --publish 80:80 --publish 443:443 lscr.io/linuxserver/heimdall
 				echo "Scaling the services";
 				docker service scale minecraft=server=3;
 				sleep 3;
@@ -42,9 +47,11 @@ select yn in "Yes" "No"; do
 				sleep 3;
 				docker service scale pihole=3;
 				sleep 3;
+				docker service scale dashboard=3;
+				sleep 3;
 				echo "Scaling complete";
 				sleep 3;
-				echo "Installation completed";
+				echo "Installation complete!";
 				break;;
 				No )
 					echo "Installation cancelled";
