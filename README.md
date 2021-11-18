@@ -38,7 +38,7 @@
     - On the master node:
     ```sh
     # Initialize Docker Swarm
-	  docker swarm init --advertise-addr <IP address>
+  docker swarm init --advertise-addr <IP address>
     ```
     - On the worker node(s):
     ```sh
@@ -61,60 +61,60 @@
     tailscale ip -4
     ```
 - [Netdata](https://netdata.cloud) (Optional. The build process might take a while, depending on the computer you're installing it on.)
-    ```sh
-	  # Run install script:
-	  bash <(curl -Ss https://my-netdata.io/kickstart.sh)
-	  # Join my Netdata space
-	  bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
-    ```
+   ```sh
+   # Run install script:
+   bash <(curl -Ss https://my-netdata.io/kickstart.sh)
+   # Join my Netdata space
+   bash <(curl -Ss https://my-netdata.io/kickstart.sh) --claim-token <token> --claim-rooms <room-id> --claim-url https://app.netdata.cloud
+   ```
 - Unattended Upgrades disabled
-    ```sh
-    # This sounds counterintuitive, but there are packages that need to be installed
-    # and that can't be done with unattended-upgrades running
-    sudo systemctl stop unattended-upgrades
-    # Disable it
-    sudo systemctl disable unattended-upgrades
-    ```
+   ```sh
+   # This sounds counterintuitive, but there are packages that need to be installed
+   # and that can't be done with unattended-upgrades running
+   sudo systemctl stop unattended-upgrades
+   # Disable it
+   sudo systemctl disable unattended-upgrades
+   ```
 #### Instructions:
 - [Minecraft Server](https://github.com/itzg/docker-minecraft-server)
-    ```sh
-    # Make Minecraft volume
-    docker volume create minecraft-data
-    # Run the server
-    docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER itzg/minecraft-server
-    # Scale the service
-    docker service scale minecraft-server=3
-    ```
+   ```sh
+   # Make Minecraft volume
+   docker volume create minecraft-data
+   # Run the server
+   docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER itzg/minecraft-server
+   # Scale the service
+   docker service scale minecraft-server=3
+   ```
 - [Home Assistant](https://home-assistant.io/)
-    ```sh
-    # Create the volume for Home Assistant
-    docker volume create hass-data
-    # Run the server
-    docker service create --name hass --privileged -e TZ=America/Chicago --mount source=hass-data,target=/config --network=host ghcr.io/home-assistant/home-assistant:stable
-    # Scale the service
-    docker service scale hass=3
-    ```
+   ```sh
+   # Create the volume for Home Assistant
+   docker volume create hass-data
+   # Run the server
+   docker service create --name hass --privileged -e TZ=America/Chicago --mount source=hass-data,target=/config --network=host ghcr.io/home-assistant/home-assistant:stable
+   # Scale the service
+   docker service scale hass=3
+   ```
 - [Drupal](https://drupal.org/)
-    - What is Drupal?	
-	    - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
-    - Installing:
-    ```sh
-    # Create the necessary volumes
-    docker volume create drupal-modules
-    docker volume create drupal-profiles
-    docker volume create drupal-themes
-    docker volume create drupal-sites
-    # Run the server
-    docker service create --name postgres -e POSTGRES_PASSWORD=<password> postgres:10
-    docker service create --name drupal --publish 8080:80 --mount source=drupal-modules,target=/var/www/html/modules --mount source=drupal-profiles,target=/var/www/html/profiles --mount source=drupal-themes,target=/var/www/html/themes --mount source=drupal=sites,target=/var/www/html/sites
-    # Scale the services
-    docker service scale postgres=3
-    docker service scale drupal=3
-    ```
+   - What is Drupal?	
+	   - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
+   - Installation:
+   ```sh
+   # Create the necessary volumes
+   docker volume create drupal-modules
+   docker volume create drupal-profiles
+   docker volume create drupal-themes
+   docker volume create drupal-sites
+   # Run the server
+   docker service create --name postgres -e POSTGRES_PASSWORD=<password> postgres:10
+   docker service create --name drupal --publish 8080:80 --mount source=drupal-modules,target=/var/www/html/modules --mount source=drupal-profiles,target=/var/www/html/profiles --mount source=drupal-themes,target=/var/www/html/themes --mount source=drupal=sites,target=/var/www/html/sites
+   # Scale the services
+   docker service scale postgres=3
+   docker service scale drupal=3
+   ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
         - [Pi-hole]() is a DNS server that blocks ads and tracking, originally created for use on a Raspberry Pi.
-    - Installing:
+    - Installation:
     ```sh
     # Create the volumes
     docker volume create pihole
