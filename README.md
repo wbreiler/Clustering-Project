@@ -88,19 +88,11 @@
 - [Home Assistant](https://home-assistant.io/)
    - What is [Home Assistant]()?
      - [Home Assistant]() is a free and open-source software for home automation that's designed to be the central control system for smart home devices with focus on local control and privacy. It is commonly hosted on a Raspberry Pi
-   - Installation:
-   ```sh
-   # Create the volume for Home Assistant
-   docker volume create hass-data
-   # Run the server
-   docker service create --name hass --privileged -e TZ=America/Chicago --mount source=hass-data,target=/config --network=host ghcr.io/home-assistant/home-assistant:stable
-   # Scale the service
-   docker service scale hass=3
-   ```
+   - Installation (WIP): 
 - [Drupal](https://drupal.org/)
    - What is Drupal?	
 	   - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
-   - Installation:
+   - Installation (WIP):
    ```sh
    # Create the necessary volumes
    docker volume create drupal-modules
@@ -108,11 +100,7 @@
    docker volume create drupal-themes
    docker volume create drupal-sites
    # Run the server
-   docker service create --name postgres -e POSTGRES_PASSWORD=<password> postgres:10
-   docker service create --name drupal --publish 8080:80 --mount source=drupal-modules,target=/var/www/html/modules --mount source=drupal-profiles,target=/var/www/html/profiles --mount source=drupal-themes,target=/var/www/html/themes --mount source=drupal=sites,target=/var/www/html/sites
    # Scale the services
-   docker service scale postgres=3
-   docker service scale drupal=3
    ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
