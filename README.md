@@ -94,16 +94,12 @@
 	   - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
    - Installation (WIP):
    ```sh
-   # Create the necessary volumes
-   docker volume create drupal-modules
-   docker volume create drupal-profiles
-   docker volume create drupal-themes
-   docker volume create drupal-sites
    # Download the stack.yml file
    wget https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml  
    # Run the server
-   docker stack deploy -c stack.yml
+   docker stack deploy -c stack.yml drupal
    # Scale the services
+
    ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
