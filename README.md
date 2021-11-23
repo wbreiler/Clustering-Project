@@ -99,7 +99,10 @@
    docker volume create drupal-profiles
    docker volume create drupal-themes
    docker volume create drupal-sites
+   # Download the drupal.yml file
+   wget 
    # Run the server
+   
    # Scale the services
    ```
 - [Pi-hole](https://pi-hole.net/)
