@@ -10,7 +10,7 @@
 # Database password: example
 # ADVANCED OPTIONS; Database host: postgres
 
-vaersion: '3.1'
+version: '3.1'
 
 services:
 
