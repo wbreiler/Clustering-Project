@@ -99,10 +99,10 @@
    docker volume create drupal-profiles
    docker volume create drupal-themes
    docker volume create drupal-sites
-   # Download the drupal.yml file
-   wget 
+   # Download the stack.yml file
+   wget https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml  
    # Run the server
-   
+   docker stack deploy -c stack.yml
    # Scale the services
    ```
 - [Pi-hole](https://pi-hole.net/)
