@@ -99,7 +99,8 @@
    # Run the server
    docker stack deploy -c stack.yml drupal
    # Scale the services
-
+   docker service scale drupal_drupal=3
+   docker serivce scale drupal_postgres=3
    ```
 - [Pi-hole](https://pi-hole.net/)
     - What is Pi-hole?
