@@ -83,7 +83,7 @@
   # Make Minecraft volume
   docker volume create minecraft-data
   # Run the server
-  docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER itzg/minecraft-server
+  docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER -e MEMORY=3G itzg/minecraft-server
   # Scale the service
   docker service scale minecraft-server=3
   ```
