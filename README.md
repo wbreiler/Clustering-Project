@@ -125,7 +125,7 @@
     # Create the volumes
     docker volume create heimdall-config
     # Run Heimdall
-    docker service create --name dashboard -e TZ=America/Chicago --publish 80:80 --publish 443:443 --mount source=heimdall-config.target=/config lscr.io/linuxserver/heimdall
+    docker service create --name dashboard -e TZ=America/Chicago --publish 81:80 --publish 443:443 --mount source=heimdall-config,target=/config lscr.io/linuxserver/heimdall
     # Scale the service
     docker service scale dashboard=3
     ```
