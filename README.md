@@ -80,17 +80,22 @@
   #### Instructions:
 - [Minecraft Server](https://github.com/itzg/docker-minecraft-server)
   ```sh
+  # Pull Docker image
+  docker pull itzg/minecraft-server
   # Make Minecraft volume
   docker volume create minecraft-data
   # Run the server
-  docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER -e MEMORY=3G itzg/minecraft-server
+  docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER -e MEMORY=2G itzg/minecraft-server
   # Scale the service
   docker service scale minecraft-server=3
   ```
 - [Home Assistant](https://home-assistant.io/)
   - What is [Home Assistant]()?
     - [Home Assistant]() is a free and open-source software for home automation that's designed to be the central control system for smart home devices with focus on local control and privacy. It is commonly hosted on a Raspberry Pi
-  - Installation (WIP): 
+  - Installation:
+    ```sh
+    TODO
+    ```
 - [Drupal](https://drupal.org/)
   - What is Drupal?
     - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
@@ -109,6 +114,8 @@
     - [Pi-hole]() is a DNS server that blocks ads and tracking, originally created for use on a Raspberry Pi.
   - Installation:
     ```sh
+    # Pull the Docker image
+    docker pull pihole/pihole
     # Create the volumes
     docker volume create pihole
     docker volume create dnsmasq
@@ -122,6 +129,8 @@
     - [Heimdall]() is a dashboard to manage all of your applications. It doesn't have to be limited to just applications though, it can link to anything you'd like.
   - Installation:
     ```sh
+    # Pull the Docker image
+    docker pull lscr.io/linuxserver/heimdall
     # Create the volumes
     docker volume create heimdall-config
     # Run Heimdall
