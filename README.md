@@ -82,7 +82,7 @@
   ```sh
   # Pull Docker image
   docker pull itzg/minecraft-server
-  # Make Minecraft volume
+  # Make a Minecraft volume
   docker volume create minecraft-data
   # Run the server
   docker service create --name minecraft-server --publish 25565:25565 --publish 19132:19132 --mount source=minecraft-data,target=/data -e EULA=TRUE -e TYPE=PAPER -e MEMORY=2G itzg/minecraft-server
@@ -101,6 +101,11 @@
     - [Drupal]() is a CMS (content management system) written in PHP, similar to Wordpress.
   - Installation (WIP):
     ```sh
+    # Create volumes
+    docker volume create drupal-modules
+    docker volume create drupal-profiles
+    docker volume create drupal-themes
+    docker volume create drupal-sites
     # Download the stack.yml file
     wget https://raw.githubusercontent.com/wbreiler/Clustering-Project/master/stack.yml  
     # Run the server
@@ -116,7 +121,7 @@
     ```sh
     # Pull the Docker image
     docker pull pihole/pihole
-    # Create the volumes
+    # Create volumes
     docker volume create pihole
     docker volume create dnsmasq
     # Run Pi-hole
@@ -131,9 +136,9 @@
     ```sh
     # Pull the Docker image
     docker pull lscr.io/linuxserver/heimdall
-    # Create the volumes
+    # Create Heimdall volume
     docker volume create heimdall-config
-    # Run Heimdall
+    # Run a Heimdall
     docker service create --name dashboard -e TZ=America/Chicago --publish 81:80 --publish 443:443 --mount source=heimdall-config,target=/config lscr.io/linuxserver/heimdall
     # Scale the service
     docker service scale dashboard=3
